@@ -640,7 +640,7 @@ def change_password(request):
             else:
                 messages.success(request, ("Successfully Password is Changed") )
                 return redirect('user_login')
-    return render(request, 'authenticate\change_password.html',{'UserID':UserID})
+    return render(request, 'authenticate/change_password.html',{'UserID':UserID})
 
 def user_login(request) :
     if request.method == 'POST':
@@ -658,7 +658,7 @@ def user_login(request) :
 
             return redirect('user_login')
 
-    return render(request, 'authenticate\login.html')
+    return render(request, 'authenticate/login.html')
 
 
 def user_signup(request):
@@ -682,7 +682,7 @@ def user_signup(request):
             messages.success(request, ("Successfully User is Created") )
             return redirect('user_login')
 
-    return render(request, 'authenticate\signup.html')
+    return render(request, 'authenticate/signup.html')
 
 
 def user_logout(request) :
@@ -704,8 +704,8 @@ def forgot_password(request):
             my_user = User.objects.get(username=UserID)
             email = my_user.email
             password = my_user.password
-            return  render(request,'authenticate\email_sent.html',{'email':email})
-    return render(request,'authenticate\Forgot_password.html')
+            return  render(request,'authenticate/email_sent.html',{'email':email})
+    return render(request,'authenticate/Forgot_password.html')
 
 def email_sent(request):
     if request.method == 'POST':
